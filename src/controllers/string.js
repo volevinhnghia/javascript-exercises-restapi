@@ -16,14 +16,18 @@ const palindromeString = (req, res) => {
   res.send(result);
 };
 const elementCount = (req, res) => {
-    let newString = req.params.string;
-    let checkElement = req.query.ele;
-    console.log(newString);
-    console.log(checkElement);
-    res.send('work')
-}
+  let newString = req.params.string;
+  let checkElement = req.query.element;
+  let count = 0;
+  for (let index = 0; index < newString.length; index++) {
+    if (newString[index] === checkElement) {
+      count++;
+    }
+  }
+  res.send(`"${checkElement}" appear in string ${count} times`);
+};
 module.exports = {
   reverseString,
   palindromeString,
-  elementCount
+  elementCount,
 };

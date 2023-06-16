@@ -1,13 +1,17 @@
 const express = require("express");
 const app = express();
-const calcRouter = require('./routes/calc')
+const calcRouter = require("./routes/calc");
+const primeNumber = require("./routes/prime");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const port = 3000;
 
-app.use('/v1/', calcRouter);
-app.get('/',(req, res) => {res.send('Hello world!')})
+app.use("/v1/", calcRouter);
+app.use("/v1/", primeNumber);
+app.get("/", (req, res) => {
+  res.send("Hello world!");
+});
 
-app.listen(port,()=>{
-    console.log(`listening on port ${port}`);
-})
+app.listen(port, () => {
+  console.log(`listening on port ${port}`);
+});

@@ -26,8 +26,19 @@ const elementCount = (req, res) => {
   }
   res.send(`"${checkElement}" appear in string ${count} times`);
 };
+const randomString = (req, res) => {
+  let result = "";
+  for (let index = 0; index < req.params.length; index++) {
+    result =
+      result +
+      String.fromCharCode(Math.floor(Math.random() * (126 - 32 + 1) + 32));
+      //Random character from 32 to 126 in ascii table
+  }
+  res.send(result);
+};
 module.exports = {
   reverseString,
   palindromeString,
   elementCount,
+  randomString,
 };

@@ -1,5 +1,18 @@
 const reverseString = (req, res) => {
-  res.send(req.params.string.split("").reverse().join(""));
+  let array = req.params.string.split("");
+
+  let i = 0;
+  let n = array.length;
+  
+  while (i <= n / 2) {
+    let temp = array[i];
+    array[i] = array[n - i];
+    array[n - i] = temp;
+    i++;
+  }
+  let result = array.join("");
+  res.send(result);
+  //res.send("done");
   //split each character with split method to array
   // then use reverse method for reverse array and then use join method for merge all element to one string
 };
@@ -32,7 +45,7 @@ const randomString = (req, res) => {
     result =
       result +
       String.fromCharCode(Math.floor(Math.random() * (126 - 32 + 1) + 32));
-      //Random character from 32 to 126 in ascii table
+    //Random character from 32 to 126 in ascii table
   }
   res.send(result);
 };
